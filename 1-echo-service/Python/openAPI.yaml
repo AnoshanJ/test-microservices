@@ -1,19 +1,32 @@
 openapi: 3.0.3
 info:
   title: Echo Service - Python REST API
+  description: This is a simple echo service that will return the same text posted to the echo endpoint.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
+externalDocs:
+  description: Choreo
+  url: https://choreo.dev
 servers:
-  - url: http://localhost:8090
+  - url: http://localhost:9090
 paths:
   /health:
     get:
-      operationId: checkHealth
+      summary: Health Check
+      operationId: healthCheck
       responses:
         "200":
-          description: Health check successful!
-  /:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringArray'
+  /echo:
     post:
-      operationId: postEchoMessage
+      summary: Echo test
+      operationId: EchoService
       requestBody:
         required: true
         content:
@@ -22,40 +35,14 @@ paths:
               type: string
       responses:
         "200":
-          description: Ok
+          description: Echoed text response
           content:
             text/plain:
               schema:
                 type: string
-        "400":
-          description: Bad Request
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorPayload"
 components:
   schemas:
-    ErrorPayload:
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason phrase
-        path:
-          type: string
-          description: Request path
-        method:
-          type: string
-          description: Method type of the request
-        message:
-          type: string
-          description: Error message
-        timestamp:
-          type: string
-          description: Timestamp of the error
-        status:
-          type: integer
-          description: Relevant HTTP status code
-          format: int32
+    StringArray:
+      type: array
+      items:
+        type: string
