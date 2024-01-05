@@ -10,6 +10,13 @@ When the service is invoked with a message, the service will respond with the sa
 `
 `java -jar ./target/echo-service-0.0.1-SNAPSHOT.jar`
 
+## Build the project
+
+`./mvnw clean install`
+Run the service
+
+`./mvnw spring-boot:run`
+
 ## Test the endpoint
 
 ```
