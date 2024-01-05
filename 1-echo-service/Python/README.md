@@ -14,5 +14,5 @@ OR Using default port: 5000
 ## Test the endpoint
 
 ```
-curl -L 'http://localhost:8090/' -H 'Content-Type: application/json' -d '"Hello Word!"'
+curl -L 'http://localhost:9090/echo' -H 'Content-Type: text/plain' -d '"Hello Word!"'
 ```
