@@ -1,7 +1,7 @@
 # Docker multi-stage build
 
 # 1. Building the App with Maven
-FROM maven:3.8.7-eclipse-temurin-19-alpine
+FROM maven:3.8.7-eclipse-temurin-17-alpine
 
 ADD . /java-springboot
 WORKDIR /java-springboot
@@ -13,7 +13,7 @@ RUN ls -l
 RUN mvn clean install
 
 # 2. Just using the build artifact and then removing the build-container
-FROM openjdk:19-alpine
+FROM openjdk:17-alpine
 
 # https://security.alpinelinux.org/vuln/CVE-2021-46848
 RUN apk add --upgrade libtasn1-progs
@@ -31,7 +31,7 @@ VOLUME /tmp
 USER 10014
 
 # Add Spring Boot app.jar to Container
-COPY --from=0 "/java-springboot/target/product-*.jar" app.jar
+COPY --from=0 "/java-springboot/target/echo-service-*.jar" app.jar
 
 # Fire up our Spring Boot app by default
 CMD [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
