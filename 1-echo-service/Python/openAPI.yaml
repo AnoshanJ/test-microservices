@@ -20,7 +20,7 @@ paths:
         "200":
           description: Successful operation
           content:
-            application/json:
+            text/plain:
               schema:
                 $ref: '#/components/schemas/StringArray'
   /echo:

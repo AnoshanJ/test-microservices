@@ -1,4 +1,4 @@
-# Echo Service Using Python-Flask
+# Echo Service Using Ballerina
 
 ## Use case
 
@@ -6,10 +6,7 @@ When the service is invoked with a message, the service will respond with the sa
 
 ## How to Run
 
-`python -m pip install flask`
-`python echo.py`
-OR Using default port: 5000
-`python -m flask --app echo run`
+`bal run`
 
 ## Test the endpoint
 

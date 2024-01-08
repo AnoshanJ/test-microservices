@@ -8,29 +8,36 @@ servers:
       server:
         default: http://localhost
       port:
-        default: "8090"
+        default: "9090"
 paths:
-  /:
-    post:
-      operationId: postEchoMessage
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/EchoRequest"
+  /health:
+    get:
+      summary: Health Check
+      operationId: healthCheck
       responses:
         "200":
-          description: Ok
-        "202":
-          description: Accepted
-        "400":
-          description: Bad Request
-        "500":
-          description: Internal server error
+          description: Successful operation
           content:
-            application/json:
+            text/plain:
               schema:
-                $ref: "#/components/schemas/ErrorPayload"
+                $ref: '#/components/schemas/StringArray'
+  /echo:
+    post:
+      summary: Echo test
+      operationId: EchoService
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: Echoed text response
+          content:
+            text/plain:
+              schema:
+                type: string
 components:
   schemas:
     ErrorPayload:

@@ -1,7 +1,10 @@
 import ballerina/http;
 
-service / on new http:Listener(8090) {
-    resource function post .(@http:Payload string textMsg) returns string {
+service / on new http:Listener(9090) {
+    resource function post echo(@http:Payload string textMsg) returns string {
         return textMsg;
+    }
+    resource function get health() returns string {
+        return "Service Running";
     }
 }
