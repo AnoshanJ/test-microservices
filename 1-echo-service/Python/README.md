@@ -16,3 +16,7 @@ OR Using default port: 5000
 ```
 curl -L 'http://localhost:9090/echo' -H 'Content-Type: text/plain' -d '"Hello Word!"'
 ```
+
+```
+curl -L 'http://localhost:9090/health'
+```
