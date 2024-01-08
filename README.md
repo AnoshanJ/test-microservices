@@ -1,8 +1,13 @@
-# Micro service Load Deployment
+# Micro Service Deployment
 
-Microservices for testing kubernetes deployment resource usage. Implemented in various languages.
+Sample Microservices for Choreo Deployment. Implemented in various languages.
+
+# Purpose
+
+Analyzing Kubernetes deployment resource usage.
 
 Echo-Service
 
 1. Python
 2. Ballerina
+3. Java (Dockerized)

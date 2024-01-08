@@ -20,9 +20,9 @@ Run the service
 ## Test the endpoint
 
 ```
-curl -L 'http://localhost:8080/echo' -H 'Content-Type: text/plain' -d '"Hello Word!"'
+curl -L 'http://localhost:9090/echo' -H 'Content-Type: text/plain' -d '"Hello Word!"'
 ```
 
 ```
-curl -L 'http://localhost:8080/health'
+curl -L 'http://localhost:9090/health'
 ```
