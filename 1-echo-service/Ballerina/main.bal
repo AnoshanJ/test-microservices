@@ -1,6 +1,6 @@
 import ballerina/http;
 
-service / on new http:Listener(8090) {
+service / on new http:Listener(9090) {
     resource function post echo(@http:Payload string textMsg) returns string {
         return textMsg;
     }
