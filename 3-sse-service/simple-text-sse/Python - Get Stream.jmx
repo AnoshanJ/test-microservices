@@ -58,8 +58,7 @@
       </ThreadGroup>
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Python - GET Stream">
-          <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
-          <stringProp name="HTTPSampler.port">8000</stringProp>
+          <stringProp name="HTTPSampler.domain">https://b0d941db-e69a-46ae-b4bc-8d65010bd7de-dev.e1-us-east-azure.preview-dv.choreoapis.dev/zgus/echopython/sse-rest-endpoint-be2/v1.1</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.path">/stream</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
