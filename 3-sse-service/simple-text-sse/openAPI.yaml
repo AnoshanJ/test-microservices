@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: Echo Service - Python REST API
+  description: This is a simple echo service that will return the same text posted to the echo endpoint.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Choreo
+  url: https://choreo.dev
+servers:
+  - url: http://localhost:8000
+paths:
+  /:
+    get:
+      summary: Hello World
+      operationId: helloWorld
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringArray'
+  /stream:
+    get:
+      summary: Stream test
+      operationId: streamService
+      responses:
+        "200":
+          description: Echoed text response
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    StringArray:
+      type: array
+      items:
+        type: string
