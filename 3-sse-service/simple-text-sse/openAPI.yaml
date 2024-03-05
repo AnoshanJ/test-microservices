@@ -19,15 +19,21 @@ paths:
       responses:
         "200":
           description: Successful operation
-          content: { "application/json": { "schema": {} } }
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/StringArray"
   /stream:
     get:
       summary: Stream test
       operationId: streamService
       responses:
-      "200":
-        description: "Successful Response"
-        content: { "application/json": { "schema": {} } }
+        "200":
+          description: Echoed text response
+          content:
+            text/plain:
+              schema:
+                type: string
 components:
   schemas:
     StringArray:
