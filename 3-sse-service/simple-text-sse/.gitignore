@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Load Testing
+load-testing/
+../load-testing/
 # C extensions
 *.so
 
