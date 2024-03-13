@@ -5,6 +5,10 @@ __pycache__/
 
 # Load Testing
 load-testing/
+load-testing-50/
+load-testing-100/
+load-testing-results-50/
+load-testing-results-100/
 ../load-testing/
 # C extensions
 *.so
