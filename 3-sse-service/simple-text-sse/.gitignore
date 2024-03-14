@@ -9,6 +9,7 @@ load-testing-50/
 load-testing-100/
 load-testing-results-50/
 load-testing-results-100/
+load-testing-results-100-update/
 ../load-testing/
 Containerized/
 # C extensions
