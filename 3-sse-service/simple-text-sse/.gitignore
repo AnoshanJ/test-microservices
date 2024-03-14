@@ -10,6 +10,7 @@ load-testing-100/
 load-testing-results-50/
 load-testing-results-100/
 ../load-testing/
+Containerized/
 # C extensions
 *.so
 
