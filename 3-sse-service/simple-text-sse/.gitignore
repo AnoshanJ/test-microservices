@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Load Testing
+load-testing/
+load-testing-50/
+load-testing-100/
+load-testing-results-50/
+load-testing-results-100/
+../load-testing/
+Containerized/
 # C extensions
 *.so
 
