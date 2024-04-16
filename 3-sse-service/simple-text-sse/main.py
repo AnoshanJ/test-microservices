@@ -8,12 +8,14 @@ from datetime import datetime
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import FastAPI, Request
 from sse_starlette.sse import EventSourceResponse
+from fastapi.responses import StreamingResponse
 
-STREAM_DELAY = 1  # second
+
+STREAM_DELAY = 0.2  # second
 RETRY_TIMEOUT = 15000  # milisecond
 WORDS_PER_MESSAGE = 10  # number of words per message
 
-file_path = './data/far-far-away-1000.txt'
+file_path = './data/far-far-away-10000.txt'
 
 app = FastAPI()
 
@@ -81,11 +83,13 @@ async def message_stream(request: Request):
             msg = await read_lines(event_count*WORDS_PER_MESSAGE)
             
             if msg:
-                yield { "event": "message",
-                        "id": str(event_count),
-                        "retry": RETRY_TIMEOUT,
-                        "data": msg
-                }
+                # yield { "event": "message",
+                #         "id": str(event_count),
+                #         "retry": RETRY_TIMEOUT,
+                #         "data": msg
+                # }
+                yield f"data: {msg}\n\nid: {event_count}\nretry: {RETRY_TIMEOUT}\n"
+
             else:
                 logger.info('x-request-id: '+str(request.headers.get('x-request-id'))+' End of file reached')
                 # close the connection
@@ -93,7 +97,10 @@ async def message_stream(request: Request):
             event_count+=1
             await asyncio.sleep(STREAM_DELAY)
 
-    return EventSourceResponse(event_generator())
+    # return EventSourceResponse(event_generator())
+    # return EventStreamResponse(event_generator())
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
+
 
 @app.post('/stream-post')
 async def message_stream_post(request: Request):
