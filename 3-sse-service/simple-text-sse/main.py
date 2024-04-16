@@ -121,11 +121,7 @@ async def message_stream_post(request: Request):
             msg = await read_lines(event_count*WORDS_PER_MESSAGE)
             
             if msg:
-                yield { "event": str(body),
-                        "id": str(event_count),
-                        "retry": RETRY_TIMEOUT,
-                        "data": msg
-                }
+                yield f"data: {msg}\n\nid: {event_count}\nretry: {RETRY_TIMEOUT}\n"
             else:
                 logger.info('x-request-id: '+str(request.headers.get('x-request-id'))+' End of file reached')
                 # close the connection
@@ -133,7 +129,8 @@ async def message_stream_post(request: Request):
             event_count+=1
             await asyncio.sleep(STREAM_DELAY)
 
-    return EventSourceResponse(event_generator())
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
+
     
 def load_text(file_path:str='./data/lorem-ipsum-1000.txt'):
     try:
